@@ -56,7 +56,7 @@ const cars = [
         manufacturer: 'Seat',
         model: 'Ibiza',
         type: 'metano'
-    }
+    }, //mancava una virgola
     {
         manufacturer: 'Audi',
         model: 'R8',
@@ -64,14 +64,17 @@ const cars = [
     },
 ];
 
-const gasolineCars = cars.filter( (auto) >= auto.type === 'benzina');
+const gasolineCars = cars.filter( auto => {
+    if (auto.type.toLowerCase() === 'benzina')
+    return auto;//una parentesi di troppo
+}); // sbagliata la sintassi di filter
 
 const dieselCars = cars.filter( (auto) => {
-    auto.type === 'diesel';
+    if (auto.type.toLowerCase() === 'diesel') return auto;
 });
 
 const otherCars = cars.filter( (auto) => {
-    return auto.type !== 'benzina' || auto.type !== 'diesel';
+    if (auto.type.toLowerCase() !== 'benzina' && auto.type.toLowerCase() !== 'diesel') return auto; // && non \\
 });
 
 console.log('Auto a benzina');
